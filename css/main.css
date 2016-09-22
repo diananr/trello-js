@@ -7,6 +7,10 @@ body{
 	background-color: #F79F81;
 }
 #contenedorLista{
+	display: inline-block;
+	float: left;
+}
+#nuevaLista{
 	background-color: #FA8258;
 	width: 250px;
 	height: 40px;
@@ -17,7 +21,7 @@ body{
 #contenedorLista:hover{
 	background-color: rgba(0,0,0,0.2);
 }
-form{
+#formLista{
 	background-color:#E2E4E6;
 	width: 250px;
 	padding: 8px;
@@ -40,7 +44,7 @@ form button{
 	margin: 1px;
 	border-radius: 3px;
 }
-.newList{
+.nomList{
 	width: 250px;
 	height: 40px;
 	background-color: #E2E4E6;
@@ -56,4 +60,11 @@ form button{
 }
 .tarjeta:hover{
 	background-color: rgba(0,0,0,.05);
+}
+#contenedor{
+	display: inline-block;
+	background-color: #FA8258;
+}
+.nuevoConten{
+	display: inline-block;
 }
