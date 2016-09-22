@@ -20,14 +20,40 @@ body{
 form{
 	background-color:#E2E4E6;
 	width: 250px;
-	height: 80px;
+	padding: 8px;
 	border-radius: 5px;
 	display: none;
 }
+form input{
+	background: rgba(0,0,0,.05);
+	border-color: #aaa;
+	border-radius: 3px;
+	border:1px solid #cdd2d4;
+	padding: 5px;
+}
 form button{
 	background-color: #56A440;
+	font-weight: bold;
 	color: white;
+	border: none;
+	padding: 5px;
+	margin: 1px;
+	border-radius: 3px;
 }
-#nombreLista{
-	width: 
+.newList{
+	width: 250px;
+	height: 40px;
+	background-color: #E2E4E6;
+	font-weight: bold;
+	padding: 9px;
+	border-radius: 3px;
+}
+.tarjeta{
+	background-color: #E2E4E6;
+	width: 250px;
+	color: gray;
+	padding: 8px;
+}
+.tarjeta:hover{
+	background-color: rgba(0,0,0,.05);
 }
