@@ -9,6 +9,7 @@ window.addEventListener("load", function() {
 	cajaLista.addEventListener("click", function(){
   		cajaLista.style.display = "none";
   		formuLista.style.display = "block";
+  		nombreLista.focus();
 	});
 
 	botonGuardar.addEventListener("click", function(){
@@ -28,6 +29,12 @@ window.addEventListener("load", function() {
 		tarjeta.innerText = "Añadir una tarjeta..."
 		padre.insertBefore(tarjeta, padre.childNodes[1]);
 		tarjeta.classList.add("tarjeta");
+
+		tarjeta.addEventListener("click", function(){
+			tarjeta.style.display = "none";
+			agregarTarjeta(padre);
+
+		});
 	}
 	function agregaContenedor(){
 		var nuevoContenedor = document.createElement("div");
@@ -39,5 +46,20 @@ window.addEventListener("load", function() {
 		nuevoContenedor.classList.add("nuevoConten");
 
 		cajaLista.style.display = "block";
+	}
+	function agregarTarjeta(padre){
+		var nuevaTarjeta = document.createElement("form");
+		var rectangulo = document.createElement("textarea");
+		var btnAnadir = document.createElement("button");
+
+		nuevaTarjeta.insertBefore(rectangulo, nuevaTarjeta.childNodes[0]);
+		nuevaTarjeta.insertBefore(btnAnadir, nuevaTarjeta.childNodes[1]);
+		padre.insertBefore(nuevaTarjeta, padre.childNodes[1]);
+
+		btnAnadir.innerText = "Añadir";
+
+		nuevaTarjeta.classList.add("ntarjeta");
+		rectangulo.classList.add("ntextarea");
+		btnAnadir.classList.add("nboton");
 	}
 });

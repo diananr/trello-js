@@ -68,3 +68,16 @@ form button{
 .nuevoConten{
 	display: inline-block;
 }
+.ntarjeta{
+	background-color: #E2E4E6;
+	width: 250px;
+	padding: 8px;
+}
+.ntextarea{
+	resize: none;
+	width: 230px;
+	height: 80px;
+}
+.nboton{
+	display: block;
+}
