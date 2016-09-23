@@ -62,4 +62,8 @@ window.addEventListener("load", function() {
 		rectangulo.classList.add("ntextarea");
 		btnAnadir.classList.add("nboton");
 	}
+	function guardarTarjeta(){
+		var tarje = document.createElement("div");
+
+	}
 });
