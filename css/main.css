@@ -9,6 +9,7 @@ body{
 #contenedorLista{
 	display: inline-block;
 	float: left;
+	border-radius: 5px;
 }
 #nuevaLista{
 	background-color: #FA8258;
@@ -18,7 +19,7 @@ body{
 	border-radius: 5px;
 	color: #f8ecc9;
 }
-#contenedorLista:hover{
+#nuevaLista:hover{
 	background-color: rgba(0,0,0,0.2);
 }
 #formLista{
@@ -46,11 +47,9 @@ form button{
 }
 .nomList{
 	width: 250px;
-	height: 40px;
 	background-color: #E2E4E6;
 	font-weight: bold;
 	padding: 9px;
-	border-radius: 3px;
 }
 .tarjeta{
 	background-color: #E2E4E6;
@@ -80,4 +79,11 @@ form button{
 }
 .nboton{
 	display: block;
+}
+.cadaTarjeta{
+	background-color: #ffffff;
+	width: 230px;
+	height: 30px;
+	border-radius: 5px;
+	margin: 8px 0;
 }

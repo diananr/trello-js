@@ -6,6 +6,9 @@ window.addEventListener("load", function() {
 	var nombreLista = document.getElementById("nombreLista");
 	var botonGuardar = document.getElementById("btnGuardar");
 
+	var tarjeta = document.createElement("div");
+	var nuevaLista = document.createElement("div");
+
 	cajaLista.addEventListener("click", function(){
   		cajaLista.style.display = "none";
   		formuLista.style.display = "block";
@@ -20,20 +23,18 @@ window.addEventListener("load", function() {
 
 	function agregarLista(nombre, btnGuardar){
 		var padre = btnGuardar.parentElement.parentElement; 
-		var nuevaLista = document.createElement("div");
+		
 		nuevaLista.innerText = nombre.value;
 		padre.insertBefore(nuevaLista, padre.childNodes[0]);
 		nuevaLista.classList.add("nomList");
 
-		var tarjeta = document.createElement("div");
 		tarjeta.innerText = "Añadir una tarjeta..."
-		padre.insertBefore(tarjeta, padre.childNodes[1]);
+		padre.appendChild(tarjeta);
 		tarjeta.classList.add("tarjeta");
 
 		tarjeta.addEventListener("click", function(){
 			tarjeta.style.display = "none";
 			agregarTarjeta(padre);
-
 		});
 	}
 	function agregaContenedor(){
@@ -54,16 +55,26 @@ window.addEventListener("load", function() {
 
 		nuevaTarjeta.insertBefore(rectangulo, nuevaTarjeta.childNodes[0]);
 		nuevaTarjeta.insertBefore(btnAnadir, nuevaTarjeta.childNodes[1]);
-		padre.insertBefore(nuevaTarjeta, padre.childNodes[1]);
+		padre.appendChild(nuevaTarjeta);
 
+		btnAnadir.type = "button";
 		btnAnadir.innerText = "Añadir";
 
 		nuevaTarjeta.classList.add("ntarjeta");
 		rectangulo.classList.add("ntextarea");
 		btnAnadir.classList.add("nboton");
-	}
-	function guardarTarjeta(){
-		var tarje = document.createElement("div");
 
+		btnAnadir.addEventListener("click",function(){
+			nuevaTarjeta.style.display = "none";
+			guardarTarjeta(padre,rectangulo);
+		});
+	}
+	function guardarTarjeta(padre,rectangulo){
+		var nombreTarjeta = document.createElement("div");
+		nombreTarjeta.innerText = rectangulo.value;
+		nuevaLista.appendChild(nombreTarjeta);
+
+		nombreTarjeta.classList.add("cadaTarjeta");
+		tarjeta.style.display = "block";
 	}
 });
