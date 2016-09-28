@@ -6,21 +6,33 @@
 body{
 	background-color: #F79F81;
 }
+header{
+	position: fixed;
+	width: 100%;
+	background: rgba(0,0,0,0.1);
+    padding: 7px;
+}
 #contenedorLista{
 	display: inline-block;
 	float: left;
 	border-radius: 5px;
+	background-color: #E2E4E6;
 }
 #nuevaLista{
-	background-color: #FA8258;
 	width: 250px;
 	height: 40px;
 	padding: 8px;
 	border-radius: 5px;
-	color: #f8ecc9;
+	color: #aaa;
+}
+.bg-gray {
+	background-color: #E2E4E6;
 }
 #nuevaLista:hover{
 	background-color: rgba(0,0,0,0.2);
+}
+.p-7 {
+	padding: 7px;
 }
 #formLista{
 	background-color:#E2E4E6;
@@ -35,6 +47,7 @@ form input{
 	border-radius: 3px;
 	border:1px solid #cdd2d4;
 	padding: 5px;
+	width: 100%;
 }
 form button{
 	background-color: #56A440;
@@ -43,6 +56,7 @@ form button{
 	border: none;
 	padding: 5px;
 	margin: 1px;
+	margin-top: 7px;
 	border-radius: 3px;
 }
 .nomList{
@@ -50,31 +64,35 @@ form button{
 	background-color: #E2E4E6;
 	font-weight: bold;
 	padding: 9px;
+	border-radius: 5px;
 }
 .tarjeta{
 	background-color: #E2E4E6;
 	width: 250px;
 	color: gray;
 	padding: 8px;
-}
-.tarjeta:hover{
-	background-color: rgba(0,0,0,.05);
+	border-radius: 5px;
 }
 #contenedor{
 	display: inline-block;
 	background-color: #FA8258;
 }
+#contenedorLista, .nuevoConten {
+	margin-right: 14px;
+}
 .nuevoConten{
 	display: inline-block;
+	vertical-align: top;
+	background-color: #E2E4E6;
+	border-radius: 5px;
 }
 .ntarjeta{
 	background-color: #E2E4E6;
-	width: 250px;
-	padding: 8px;
+	width: 100%;
 }
 .ntextarea{
 	resize: none;
-	width: 230px;
+	width: 100%;
 	height: 80px;
 }
 .nboton{
@@ -82,8 +100,15 @@ form button{
 }
 .cadaTarjeta{
 	background-color: #ffffff;
-	width: 230px;
+	width: 100%;
 	height: 30px;
 	border-radius: 5px;
 	margin: 8px 0;
+	padding: 4px;
+}
+.contenedor {
+	white-space: nowrap;
+	padding-top: 56px;
+	padding-left: 21px;
+	padding-right: 21px;
 }

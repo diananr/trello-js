@@ -6,23 +6,24 @@ window.addEventListener("load", function() {
 	var nombreLista = document.getElementById("nombreLista");
 	var botonGuardar = document.getElementById("btnGuardar");
 
-	var tarjeta = document.createElement("div");
-	var nuevaLista = document.createElement("div");
-
 	cajaLista.addEventListener("click", function(){
   		cajaLista.style.display = "none";
   		formuLista.style.display = "block";
   		nombreLista.focus();
+  		contenLista.classList.add("p-7");
 	});
 
 	botonGuardar.addEventListener("click", function(){
 		formuLista.style.display = "none";
 		agregarLista(nombreLista, this);
 		agregaContenedor();
+		nombreLista.value = "";
 	});
 
 	function agregarLista(nombre, btnGuardar){
 		var padre = btnGuardar.parentElement.parentElement; 
+		var tarjeta = document.createElement("div");
+		var nuevaLista = document.createElement("div");
 		
 		nuevaLista.innerText = nombre.value;
 		padre.insertBefore(nuevaLista, padre.childNodes[0]);
@@ -31,6 +32,7 @@ window.addEventListener("load", function() {
 		tarjeta.innerText = "Añadir una tarjeta..."
 		padre.appendChild(tarjeta);
 		tarjeta.classList.add("tarjeta");
+
 
 		tarjeta.addEventListener("click", function(){
 			tarjeta.style.display = "none";
@@ -45,6 +47,7 @@ window.addEventListener("load", function() {
 		nuevoContenedor.insertBefore(formuLista, nuevoContenedor.childNodes[0]);
 		
 		nuevoContenedor.classList.add("nuevoConten");
+		nuevoContenedor.classList.add("p-7");
 
 		cajaLista.style.display = "block";
 	}
@@ -64,6 +67,8 @@ window.addEventListener("load", function() {
 		rectangulo.classList.add("ntextarea");
 		btnAnadir.classList.add("nboton");
 
+		rectangulo.focus();
+
 		btnAnadir.addEventListener("click",function(){
 			nuevaTarjeta.style.display = "none";
 			guardarTarjeta(padre,rectangulo);
@@ -72,9 +77,10 @@ window.addEventListener("load", function() {
 	function guardarTarjeta(padre,rectangulo){
 		var nombreTarjeta = document.createElement("div");
 		nombreTarjeta.innerText = rectangulo.value;
-		nuevaLista.appendChild(nombreTarjeta);
+		padre.insertBefore(nombreTarjeta, padre.lastChild);
 
 		nombreTarjeta.classList.add("cadaTarjeta");
-		tarjeta.style.display = "block";
+		padre.appendChild(nombreTarjeta.previousSibling);
+		padre.lastChild.style.display = "block";
 	}
 });
