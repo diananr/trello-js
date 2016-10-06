@@ -1,43 +1,46 @@
-window.addEventListener("load", function() {
+; (function(){
+	window.addEventListener("load", cargaPagina);
+
 	var contenTodo = document.getElementById("contieneTodo");
 	var contenLista = document.getElementById("contenedorLista");
 	var cajaLista = document.getElementById("nuevaLista");
 	var formuLista = document.getElementById("formLista");
 	var nombreLista = document.getElementById("nombreLista");
 	var botonGuardar = document.getElementById("btnGuardar");
+	var conta = 1;
 
-	cajaLista.addEventListener("click", function(){
-  		cajaLista.style.display = "none";
-  		formuLista.style.display = "block";
-  		nombreLista.focus();
-  		contenLista.classList.add("p-7");
-	});
-
-	botonGuardar.addEventListener("click", function(){
+	function cargaPagina(){
+		cajaLista.addEventListener("click", apareceFormulario);
+	}
+	function apareceFormulario(){
+		cajaLista.style.display = "none";
+		formuLista.style.display = "block";
+		nombreLista.focus();
+	    contenLista.classList.add("p-7");
+	    botonGuardar.addEventListener("click", agregar);
+	}
+	function agregar(){
 		formuLista.style.display = "none";
 		agregarLista(nombreLista, this);
 		agregaContenedor();
 		nombreLista.value = "";
-	});
-
+	}
 	function agregarLista(nombre, btnGuardar){
 		var padre = btnGuardar.parentElement.parentElement; 
 		var tarjeta = document.createElement("div");
 		var nuevaLista = document.createElement("div");
-		
+
 		nuevaLista.innerText = nombre.value;
 		padre.insertBefore(nuevaLista, padre.childNodes[0]);
 		nuevaLista.classList.add("nomList");
 
-		tarjeta.innerText = "Añadir una tarjeta..."
+		tarjeta.innerText = "Añadir una tarjeta...";
 		padre.appendChild(tarjeta);
 		tarjeta.classList.add("tarjeta");
 
-
-		tarjeta.addEventListener("click", function(){
-			tarjeta.style.display = "none";
-			agregarTarjeta(padre);
-		});
+		tarjeta.addEventListener("click", apareceFormuTarjeta);
+		padre.addEventListener("dragover", arrastraSobre);
+		padre.addEventListener("drop", soltar);
 	}
 	function agregaContenedor(){
 		var nuevoContenedor = document.createElement("div");
@@ -45,11 +48,15 @@ window.addEventListener("load", function() {
 
 		nuevoContenedor.insertBefore(cajaLista, nuevoContenedor.childNodes[0]);
 		nuevoContenedor.insertBefore(formuLista, nuevoContenedor.childNodes[0]);
-		
+
 		nuevoContenedor.classList.add("nuevoConten");
 		nuevoContenedor.classList.add("p-7");
 
 		cajaLista.style.display = "block";
+	}
+	function apareceFormuTarjeta(){
+		this.style.display = "none";
+		agregarTarjeta(this.parentElement);
 	}
 	function agregarTarjeta(padre){
 		var nuevaTarjeta = document.createElement("form");
@@ -69,10 +76,11 @@ window.addEventListener("load", function() {
 
 		rectangulo.focus();
 
-		btnAnadir.addEventListener("click",function(){
-			nuevaTarjeta.style.display = "none";
-			guardarTarjeta(padre,rectangulo);
-		});
+		btnAnadir.addEventListener("click", anade)
+	}
+	function anade(){
+		guardarTarjeta(this.parentElement.parentElement, this.previousSibling);
+		this.parentElement.remove();
 	}
 	function guardarTarjeta(padre,rectangulo){
 		var nombreTarjeta = document.createElement("div");
@@ -82,5 +90,22 @@ window.addEventListener("load", function() {
 		nombreTarjeta.classList.add("cadaTarjeta");
 		padre.appendChild(nombreTarjeta.previousSibling);
 		padre.lastChild.style.display = "block";
+
+		nombreTarjeta.setAttribute("draggable", "true");
+		nombreTarjeta.setAttribute("id","tarjeta"+conta);
+
+		nombreTarjeta.addEventListener("dragstart", empiezaArrastrar);
+
+		conta++;
 	}
-});
+	function empiezaArrastrar(e){
+	 	e.dataTransfer.setData("text", this.id);
+	}
+	function arrastraSobre(e){
+	  	e.preventDefault();
+	}
+	function soltar(e){
+		var elementArrastrado = e.dataTransfer.getData("text");
+		this.insertBefore(document.getElementById(elementArrastrado), this.lastElementChild);
+	}
+})();
