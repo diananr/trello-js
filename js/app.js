@@ -100,6 +100,7 @@
 	}
 	function empiezaArrastrar(e){
 	 	e.dataTransfer.setData("text", this.id);
+	 	this.classList.add("estiloArrastrando");
 	}
 	function arrastraSobre(e){
 	  	e.preventDefault();
@@ -107,5 +108,5 @@
 	function soltar(e){
 		var elementArrastrado = e.dataTransfer.getData("text");
 		this.insertBefore(document.getElementById(elementArrastrado), this.lastElementChild);
-	}
+	} 
 })();
