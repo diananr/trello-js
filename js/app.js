@@ -95,6 +95,7 @@
 		nombreTarjeta.setAttribute("id","tarjeta"+conta);
 
 		nombreTarjeta.addEventListener("dragstart", empiezaArrastrar);
+		nombreTarjeta.addEventListener("dragend", terminaArrastrar);
 
 		conta++;
 	}
@@ -104,9 +105,14 @@
 	}
 	function arrastraSobre(e){
 	  	e.preventDefault();
+	  	this.classList.add("animated", "bounce");
 	}
 	function soltar(e){
 		var elementArrastrado = e.dataTransfer.getData("text");
 		this.insertBefore(document.getElementById(elementArrastrado), this.lastElementChild);
+		this.classList.add("animated", "swing");
 	} 
+	function terminaArrastrar(e){
+		this.classList.remove("estiloArrastrando");
+	}
 })();

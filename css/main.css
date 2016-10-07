@@ -115,3 +115,6 @@ form button{
 .cadaTarjeta:hover{
 	background: rgba(235,233,249,1);
 }
+.estiloArrastrando{
+	border: 2px dashed black;
+}
