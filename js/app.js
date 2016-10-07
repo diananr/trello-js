@@ -116,6 +116,7 @@
 
 		nombreTarjeta.addEventListener("dragstart", empiezaArrastrar);
 		nombreTarjeta.addEventListener("dragend", terminaArrastrar);
+		nombreTarjeta.addEventListener("dragleave", salioContenedor);
 
 		conta++;
 	}
@@ -130,6 +131,12 @@
 	function arrastraSobre(e){
 	  	e.preventDefault();
 	  	this.classList.add("animated", "bounce");
+	}
+	function salioContenedor(e){
+		var estilos = document.getElementsByClassName("estiloLista");
+	 	for(var i = 0; i < estilos.length; i++){
+	 		estilos[i].classList.remove("animated", "bounce", "swing");
+	 	}
 	}
 	function soltar(e){
 		var elementArrastrado = e.dataTransfer.getData("text");
