@@ -20,7 +20,7 @@
 		nombreLista.focus();
 		contenLista.classList.add("p-7","estiloLista");
 
-		botonCerrar.addEventListener("click", cerrar);
+		botonCerrar.addEventListener("click", cerrar);	
 		botonGuardar.addEventListener("click", agregar);
 	}
 	function cerrar(){
@@ -29,10 +29,12 @@
 	}
 	function agregar(e){
 		e.preventDefault();
-		formuLista.classList.add("desaparece");
-		agregarLista(nombreLista, this);
-		agregaContenedor();
-		nombreLista.value = "";
+		if (nombreLista.value != "") {
+			formuLista.classList.add("desaparece");
+			agregarLista(nombreLista, this);
+			agregaContenedor();
+			nombreLista.value = "";
+		}	
 	}
 	function agregarLista(nombre, btnGuardar){
 		var padre = btnGuardar.parentElement.parentElement; 
